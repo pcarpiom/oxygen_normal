@@ -1,8 +1,14 @@
 *.ipynb
 
-# contents in the following folders
-notebooks/*
-project/tests/*
+# Jupyter notebooks
+notebooks/*.ipynb
+notebooks/*.py
+notebooks/*.csv
+
+.ipynb_checkpoints
+
+# tests
+project/tests/*.xyz
 docs/figures/*
 
 # IPython
