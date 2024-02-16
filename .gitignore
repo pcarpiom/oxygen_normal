@@ -1,0 +1,26 @@
+*.ipynb
+
+# contents in the following folders
+notebooks/*
+project/tests/*
+docs/figures/*
+
+# IPython
+.ipython/profile_default/history.sqlite
+.ipython/profile_default/startup/README
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
