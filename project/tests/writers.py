@@ -26,7 +26,7 @@ class Molecule:
             z.append(float(lines[(i*4+3)]))
 
             coordinates = pd.DataFrame(list(zip(atoms,x,y,z)))
-        return(coordinates)
+        print(coordinates)
 
 test1 = Molecule('mol_test.xyz')
 test1.get_coordinates()
