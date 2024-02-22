@@ -1,19 +1,28 @@
 import pandas as pd
+import logging
+
+logger = logging.getLogger('Insert oxygen')
+
 
 class Molecule:
+    """Parse .xyz file
+    """
     def __init__(self, file_name):
         self.file_name = file_name
-    
-    
-    #extract coordinates as pandas data frame
-    def get_coordinates(self):
-        with open(self.file_name) as file:
-            n_atoms = int(file.read().split()[0])
-        with open(self.file_name) as file:
-            lines = file.read().split()[2:]
 
-        print(n_atoms)
-        
+    @property
+    def coordinates(self):
+        """Get (x, y, z) coordinates
+
+        :return: pd.DataFrame
+        """
+        with open(self.file_name) as file:
+            file = file.read().split()
+            n_atoms = int(file[0])
+            lines = file[2:]
+
+        logger.info(n_atoms)
+
         atoms = []
         x = []
         y = []
@@ -25,8 +34,9 @@ class Molecule:
             y.append(float(lines[(i*4+2)]))
             z.append(float(lines[(i*4+3)]))
 
-            coordinates = pd.DataFrame(list(zip(atoms,x,y,z)))
-        print(coordinates)
+        columns = ['atom', 'x', 'y', 'z']
+        coord = pd.DataFrame(list(zip(atoms, x, y, z)), columns=columns)
 
-test1 = Molecule('mol_test.xyz')
-test1.get_coordinates()
+        logger.info(coord)
+
+        return coord
