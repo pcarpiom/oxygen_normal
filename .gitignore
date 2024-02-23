@@ -4,6 +4,7 @@
 notebooks/*.ipynb
 notebooks/*.py
 notebooks/*.csv
+notebooks/*.xyz
 
 .ipynb_checkpoints
 
