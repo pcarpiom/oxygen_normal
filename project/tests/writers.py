@@ -40,3 +40,19 @@ class Molecule:
         logger.info(coord)
 
         return coord
+
+    def writefile(self):
+        """print out xyz file with new O atoms
+
+        """
+        oxygen_found = 3
+        update_atoms = n_atoms + oxygen_found
+        oxygen_coors = pd.DataFrame({'atom':['O','O'], 'x': [1,2], 'y':[2,3], 'z':[4,5] })
+        results = pd.concat([self.coordinates, oxygen_coors])
+
+        #xyz format 
+        with open(self.file_name.replace('.xyz', '_oxy.xyz'), 'w') as nf:
+            print(update_atoms, file=nf)
+            print('mol', file=nf)
+            print(results.to_string(index=False, header=False), file=nf)
+
