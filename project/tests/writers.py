@@ -18,17 +18,17 @@ class Molecule:
         """
         with open(self.file_name) as file:
             file = file.read().split()
-            n_atoms = int(file[0])
+            self.n_atoms = int(file[0])
             lines = file[2:]
 
-        logger.info(n_atoms)
+        logger.info(self.n_atoms)
 
         atoms = []
         x = []
         y = []
         z = []
 
-        for i in range(n_atoms):
+        for i in range(self.n_atoms):
             atoms.append(lines[i*4])
             x.append(float(lines[(i*4+1)]))
             y.append(float(lines[(i*4+2)]))
@@ -41,18 +41,17 @@ class Molecule:
 
         return coord
 
-    def writefile(self):
+    def writefile(self, oxygen_coordinates):
         """print out xyz file with new O atoms
 
         """
-        oxygen_found = 3
-        update_atoms = n_atoms + oxygen_found
-        oxygen_coors = pd.DataFrame({'atom':['O','O'], 'x': [1,2], 'y':[2,3], 'z':[4,5] })
-        results = pd.concat([self.coordinates, oxygen_coors])
+        
+        update_atoms = self.n_atoms + len(oxygen_coordinates)
 
         #xyz format 
         with open(self.file_name.replace('.xyz', '_oxy.xyz'), 'w') as nf:
             print(update_atoms, file=nf)
             print('mol', file=nf)
-            print(results.to_string(index=False, header=False), file=nf)
-
+            print(self.coordinates.to_string(index=False, header=False), file=nf)
+            for i in range(len(oxygen_coordinates)):
+                print('O  '+ "%.6f" % list[i][0] + '  '+ "%.6f" % list[i][1] +'  '+ "%.6f" % list[i][2], file=nf)
