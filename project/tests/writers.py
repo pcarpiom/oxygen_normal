@@ -53,8 +53,8 @@ class Molecule:
             print(update_atoms, file=nf)
             print('mol', file=nf)
             print(self.coordinates.to_string(index=False, header=False), file=nf)
-            for i in range(2):
-                str_oxy_coords = 'O  %.6f  %.6f  %.6f ' % ( oxygen_coordinates[i][0], 
-                                                           oxygen_coordinates[i][2], 
-                                                           oxygen_coordinates[i][1])
+            for i in range(len(oxygen_coordinates)):
+                str_oxy_coords = 'O  %.6f  %.6f  %.6f ' % (oxygen_coordinates[i][0], 
+                                                           oxygen_coordinates[i][1], 
+                                                           oxygen_coordinates[i][2])
                 print(str_oxy_coords, file=nf)
