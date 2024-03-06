@@ -60,22 +60,23 @@ class OxyCoordinates():
         c_sorted = sorted(distance_from_c)
 
         pick_coord = []
-        for idx, distance in enumerate(distance_from_c):
-            if distance == c_sorted[1]:
-                pick_coord.append(idx)
+        
+        for j in distance_from_c:
+            if j == c_sorted[1]:
+                pick_coord.append(distance_from_c.index(j))          
             elif len(pick_coord) == 2:
                 pick_coord.pop()
-
-            if distance == c_sorted[2]:
-                pick_coord.append(idx)
+        for j in distance_from_c:
+            if j == c_sorted[2]:
+                pick_coord.append(distance_from_c.index(j))
             elif len(pick_coord) == 3:
                 pick_coord.pop()
+        for j in distance_from_c:
+            if j == 0:
+                pick_coord.append(distance_from_c.index(j)) 
 
-            if distance == 0:
-                pick_coord.append(idx)
-
-        return pick_coord
-
+        return pick_coord       
+    
     def _oxy_coords(self, pick_coord) -> List:
         """Generate new oxygen coordinates
 
@@ -110,7 +111,7 @@ class OxyCoordinates():
         for i in oxy_index:
             distance_ro = self._oxy_distances(i)
             ccar, distance_so = self._ccarbonyl_index(distance_ro)
-            distance_from_c = self._ccarbonyl_distanc(ccar, distance_so)
+            distance_from_c = self._ccarbonyl_distance(ccar, distance_so)
             pick_coord = self._pick_coordinates(distance_from_c)
             oxy_coords.append(self._oxy_coords(pick_coord))
 
