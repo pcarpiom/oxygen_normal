@@ -1,0 +1,10 @@
+name: oxy_env
+channels:
+  - defaults
+dependencies:
+  - python=3.12.1
+  - pip
+- pip:
+    - pandas # (spec version)
+    - numpy # (spec version)
+    - matplotlib #(spec version)
