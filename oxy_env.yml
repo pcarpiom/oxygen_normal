@@ -4,7 +4,6 @@ channels:
 dependencies:
   - python=3.12.1
   - pip
-- pip:
-    - pandas # (spec version)
-    - numpy # (spec version)
-    - matplotlib #(spec version)
+  - pip:
+    - pandas==2.2.0
+    - numpy===1.26.4
