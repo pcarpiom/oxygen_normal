@@ -9,8 +9,8 @@ The coordinates are obtained from the normal vector to the RC=O plane (see examp
 
 ![](https://github.com/pcarpiom/oxygen_normal/blob/main/docs/figures/oxy_add_pic.jpg)
 
-### Create Environment
+## Create Environment
 `conda env create -f oxy_env.yml`
 
-#### How-to
+## How-to
 `python job.py WORKDIR_PATH`
